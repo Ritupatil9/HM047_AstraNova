@@ -1,4 +1,5 @@
 import { Header } from "@/components/Header";
+import { Footer } from "@/components/Footer";
 import { useAuth } from "@/contexts/AuthContext";
 import { CreditScoreGauge } from "@/components/CreditScoreGauge";
 import { StatCard } from "@/components/StatCard";
@@ -155,14 +156,7 @@ const Index = () => {
         </div>
       </main>
 
-      {/* Footer */}
-      <footer className="border-t border-border mt-12 py-8 bg-muted/30">
-        <div className="container text-center">
-          <p className="text-sm text-muted-foreground">
-            © 2024 CreditWise. Empowering your financial journey.
-          </p>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 };

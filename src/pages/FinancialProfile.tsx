@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "@/contexts/AuthContext";
 import { Header } from "@/components/Header";
+import { Footer } from "@/components/Footer";
 import { FinancialProfileForm } from "@/components/FinancialProfileForm";
 import { FinancialProfileDisplay } from "@/components/FinancialProfileDisplay";
 import { useFinancialProfile, FinancialProfile } from "@/services/financialProfileApi";
@@ -167,6 +168,8 @@ export default function FinancialProfilePage() {
           </ul>
         </div>
       </main>
+      
+      <Footer />
     </div>
   );
 }

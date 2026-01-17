@@ -66,7 +66,7 @@ export const CreditScoreGauge = ({ score, maxScore = 900 }: CreditScoreGaugeProp
             strokeLinecap="round"
             strokeDasharray={circumference}
             strokeDashoffset={isAnimating ? circumference : strokeDashoffset}
-            className="transition-all duration-[1500ms] ease-out"
+            className="transition-all duration-1000 ease-out"
           />
         </svg>
         

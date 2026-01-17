@@ -11,6 +11,11 @@ import CreditScore from "./pages/CreditScore";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import FinancialProfile from "./pages/FinancialProfile";
+import ProtectedRoute from "@/components/ProtectedRoute";
+import Index from "./pages/Index";
+import Login from "./pages/Login";
+import Signup from "./pages/Signup";
+import AIPrediction from "./pages/AIPrediction";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -53,6 +58,24 @@ const App = () => (
               }
             />
             
+            <Route path="/login" element={<Login />} />
+            <Route path="/signup" element={<Signup />} />
+            <Route 
+              path="/" 
+              element={
+                <ProtectedRoute>
+                  <Index />
+                </ProtectedRoute>
+              } 
+            />
+            <Route 
+              path="/ai-prediction" 
+              element={
+                <ProtectedRoute>
+                  <AIPrediction />
+                </ProtectedRoute>
+              } 
+            />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>

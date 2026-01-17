@@ -40,17 +40,17 @@ export const Header = () => {
         </div>
 
         <nav className="hidden md:flex items-center gap-8">
-          <a href="#" className="text-sm font-medium text-foreground hover:text-secondary transition-colors">
+          <a href="/" className="text-sm font-medium text-foreground hover:text-secondary transition-colors">
             Dashboard
+          </a>
+          <a href="/ai-prediction" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
+            AI Prediction
           </a>
           <a href="#" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
             Loans
           </a>
           <a href="#" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
             Credit Cards
-          </a>
-          <a href="#" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
-            Learn
           </a>
         </nav>
 

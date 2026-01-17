@@ -35,12 +35,6 @@ export const Header = () => {
       .slice(0, 2);
   };
 
-      navigate('/login');
-    } catch (error) {
-      console.error('Failed to log out:', error);
-    }
-  };
-
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/50 bg-background/80 backdrop-blur-xl">
       <div className="container flex h-16 items-center justify-between">
@@ -73,6 +67,12 @@ export const Header = () => {
             Financial Profile
           </button>
           <a
+            href="/ai-prediction"
+            className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+          >
+            AI Prediction
+          </a>
+          <a
             href="#"
             className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
           >
@@ -82,17 +82,6 @@ export const Header = () => {
             href="#"
             className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
           >
-            Learn
-          <a href="/" className="text-sm font-medium text-foreground hover:text-secondary transition-colors">
-            Dashboard
-          </a>
-          <a href="/ai-prediction" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
-            AI Prediction
-          </a>
-          <a href="#" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
-            Loans
-          </a>
-          <a href="#" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
             Credit Cards
           </a>
         </nav>
@@ -148,26 +137,6 @@ export const Header = () => {
               Sign In
             </Button>
           )}
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <Button variant="ghost" size="icon">
-                <User className="w-5 h-5" />
-              </Button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent align="end" className="w-56">
-              <DropdownMenuLabel>
-                <div className="flex flex-col space-y-1">
-                  <p className="text-sm font-medium">{user?.displayName || 'User'}</p>
-                  <p className="text-xs text-muted-foreground">{user?.email}</p>
-                </div>
-              </DropdownMenuLabel>
-              <DropdownMenuSeparator />
-              <DropdownMenuItem onClick={handleLogout} className="text-destructive">
-                <LogOut className="mr-2 h-4 w-4" />
-                <span>Log out</span>
-              </DropdownMenuItem>
-            </DropdownMenuContent>
-          </DropdownMenu>
         </div>
       </div>
     </header>

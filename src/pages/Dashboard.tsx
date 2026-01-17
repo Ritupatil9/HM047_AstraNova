@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { Header } from "@/components/Header";
+import { Footer } from "@/components/Footer";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import {
@@ -195,6 +196,8 @@ export default function Dashboard() {
           </Card>
         </div>
       </main>
+      
+      <Footer />
     </div>
   );
 }

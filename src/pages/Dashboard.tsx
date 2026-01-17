@@ -69,8 +69,8 @@ export default function Dashboard() {
       description: "Get personalized recommendations to improve your financial health",
       icon: HelpCircle,
       color: "from-indigo-500 to-indigo-600",
-      status: "coming-soon",
-      action: () => {},
+      status: "available",
+      action: () => navigate("/insights"),
     },
   ];
 

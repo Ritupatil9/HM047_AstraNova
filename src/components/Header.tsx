@@ -78,6 +78,12 @@ export const Header = () => {
           >
             Credit Cards
           </a>
+          <a
+            href="#"
+            className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+          >
+            Future Scope
+          </a>
         </nav>
 
         <div className="flex items-center gap-2">

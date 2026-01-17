@@ -289,7 +289,7 @@ const Loans = () => {
 
                     <Button onClick={calculateLoan} className="w-full" size="lg">
                       <Calculator className="w-4 h-4 mr-2" />
-                      Calculate EMI
+                      Calculate Loan
                     </Button>
                   </CardContent>
                 </Card>
@@ -717,7 +717,7 @@ const Loans = () => {
                           document.querySelector('[value="calculator"]')?.dispatchEvent(new Event('click', { bubbles: true }));
                         }}
                       >
-                        Calculate EMI
+                        Calculate Loan
                       </Button>
                     </CardContent>
                   </Card>

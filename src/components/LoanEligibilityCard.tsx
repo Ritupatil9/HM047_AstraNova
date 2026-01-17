@@ -1,6 +1,8 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
-import { CheckCircle2, XCircle, AlertCircle } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { CheckCircle2, XCircle, AlertCircle, ArrowRight } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 interface EligibilityFactor {
   name: string;
@@ -19,6 +21,8 @@ export const LoanEligibilityCard = ({
   factors, 
   maxLoanAmount 
 }: LoanEligibilityCardProps) => {
+  const navigate = useNavigate();
+
   const formatCurrency = (amount: number) => {
     return new Intl.NumberFormat('en-IN', {
       style: 'currency',
@@ -80,6 +84,15 @@ export const LoanEligibilityCard = ({
             </div>
           ))}
         </div>
+
+        {/* Try Now Button */}
+        <Button 
+          onClick={() => navigate("/loans")}
+          className="w-full bg-gradient-to-r from-purple-600 to-purple-500 hover:from-purple-700 hover:to-purple-600 text-white font-medium"
+        >
+          Try Now
+          <ArrowRight className="w-4 h-4 ml-2" />
+        </Button>
       </CardContent>
     </Card>
   );

@@ -78,18 +78,12 @@ export const Header = () => {
           >
             Insights
           </button>
-          <a
-            href="#"
-            className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
-          >
-            Credit Cards
-          </a>
-          <a
-            href="#"
+          <button
+            onClick={() => navigate("/future-scope")}
             className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
           >
             Future Scope
-          </a>
+          </button>
         </nav>
 
         <div className="flex items-center gap-2">

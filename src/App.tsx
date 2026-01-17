@@ -5,6 +5,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { AuthProvider } from "@/contexts/AuthContext";
 import ProtectedRoute from "@/components/ProtectedRoute";
+import { Chatbot } from "@/components/Chatbot";
 import Index from "./pages/Index";
 import Dashboard from "./pages/Dashboard";
 import CreditScore from "./pages/CreditScore";
@@ -15,6 +16,7 @@ import Signup from "./pages/Signup";
 import FinancialProfile from "./pages/FinancialProfile";
 import Loans from "./pages/Loans";
 import Insights from "./pages/Insights";
+import FutureScope from "./pages/FutureScope";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -73,7 +75,6 @@ const App = () => (
               }
             />
             <Route 
-              path="/ai-prediction" 
               path="/loans"
               element={
                 <ProtectedRoute>
@@ -89,10 +90,19 @@ const App = () => (
                 </ProtectedRoute>
               }
             />
+            <Route
+              path="/future-scope"
+              element={
+                <ProtectedRoute>
+                  <FutureScope />
+                </ProtectedRoute>
+              }
+            />
             
             {/* Catch-all route for 404 pages */}
             <Route path="*" element={<NotFound />} />
           </Routes>
+          <Chatbot />
         </AuthProvider>
       </BrowserRouter>
     </TooltipProvider>

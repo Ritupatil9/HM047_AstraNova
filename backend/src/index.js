@@ -2,6 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import financialProfileRoutes from './routes/financialProfile.js';
+import creditScoreRoutes from './routes/creditScore.js';
 
 dotenv.config();
 
@@ -35,6 +36,7 @@ app.get('/api/health', (req, res) => {
 
 // API Routes
 app.use('/api/financial-profile', financialProfileRoutes);
+app.use('/api/credit-score', creditScoreRoutes);
 
 // 404 handler
 app.use((req, res) => {
@@ -76,6 +78,9 @@ Endpoints:
   PUT    /api/financial-profile          - Update profile
   PATCH  /api/financial-profile          - Partial update
   GET    /api/financial-profile/exists   - Check if profile exists
+  POST   /api/credit-score/calculate     - Calculate credit score
+  GET    /api/credit-score               - Get credit score
+  POST   /api/credit-score/what-if       - What-if scenario credit score
   `);
 });
 

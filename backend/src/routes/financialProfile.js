@@ -10,6 +10,33 @@ import {
 const router = express.Router();
 
 /**
+ * @route GET /api/financial-profile/exists
+ * @desc Check if authenticated user has a financial profile
+ * @access Private (requires auth token)
+ */
+router.get('/exists', verifyFirebaseToken, async (req, res) => {
+  try {
+    const userId = req.user.uid;
+    const hasProfile = await userHasProfile(userId);
+
+    return res.status(200).json({
+      success: true,
+      data: {
+        has_profile: hasProfile,
+      },
+    });
+  } catch (error) {
+    console.error('Error checking profile existence:', error);
+
+    return res.status(500).json({
+      success: false,
+      error: 'Internal server error while checking profile',
+      code: 'SERVER_ERROR',
+    });
+  }
+});
+
+/**
  * @route POST /api/financial-profile
  * @desc Create a new financial profile for authenticated user
  * @access Private (requires auth token)
@@ -134,33 +161,6 @@ router.patch('/', verifyFirebaseToken, async (req, res) => {
   // Delegate to PUT handler
   req.method = 'PUT';
   return router.handle(req, res);
-});
-
-/**
- * @route GET /api/financial-profile/exists
- * @desc Check if authenticated user has a financial profile
- * @access Private (requires auth token)
- */
-router.get('/exists', verifyFirebaseToken, async (req, res) => {
-  try {
-    const userId = req.user.uid;
-    const hasProfile = await userHasProfile(userId);
-
-    return res.status(200).json({
-      success: true,
-      data: {
-        has_profile: hasProfile,
-      },
-    });
-  } catch (error) {
-    console.error('Error checking profile existence:', error);
-
-    return res.status(500).json({
-      success: false,
-      error: 'Internal server error while checking profile',
-      code: 'SERVER_ERROR',
-    });
-  }
 });
 
 export default router;

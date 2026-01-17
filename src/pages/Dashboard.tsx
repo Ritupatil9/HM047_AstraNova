@@ -39,8 +39,8 @@ export default function Dashboard() {
       description: "Calculate your monthly EMI with different loan amounts and tenure",
       icon: PieChart,
       color: "from-green-500 to-green-600",
-      status: "coming-soon",
-      action: () => {},
+      status: "available",
+      action: () => navigate("/emi-calculator"),
     },
     {
       id: "credit-tracking",
@@ -48,8 +48,8 @@ export default function Dashboard() {
       description: "Track your credit score progress and improvements over time",
       icon: Target,
       color: "from-orange-500 to-orange-600",
-      status: "coming-soon",
-      action: () => {},
+      status: "available",
+      action: () => navigate("/credit-tracking"),
     },
     {
       id: "what-if",

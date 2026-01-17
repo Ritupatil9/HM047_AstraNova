@@ -8,6 +8,8 @@ import ProtectedRoute from "@/components/ProtectedRoute";
 import Index from "./pages/Index";
 import Dashboard from "./pages/Dashboard";
 import CreditScore from "./pages/CreditScore";
+import CreditTracking from "./pages/CreditTracking";
+import EMICalculator from "./pages/EMICalculator";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import FinancialProfile from "./pages/FinancialProfile";
@@ -50,6 +52,22 @@ const App = () => (
               element={
                 <ProtectedRoute>
                   <CreditScore />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/credit-tracking"
+              element={
+                <ProtectedRoute>
+                  <CreditTracking />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/emi-calculator"
+              element={
+                <ProtectedRoute>
+                  <EMICalculator />
                 </ProtectedRoute>
               }
             />

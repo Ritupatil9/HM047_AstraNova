@@ -3,6 +3,7 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import financialProfileRoutes from './routes/financialProfile.js';
 import creditScoreRoutes from './routes/creditScore.js';
+import emiRoutes from './routes/emi.js';
 
 dotenv.config();
 
@@ -37,6 +38,7 @@ app.get('/api/health', (req, res) => {
 // API Routes
 app.use('/api/financial-profile', financialProfileRoutes);
 app.use('/api/credit-score', creditScoreRoutes);
+app.use('/api/emi', emiRoutes);
 
 // 404 handler
 app.use((req, res) => {

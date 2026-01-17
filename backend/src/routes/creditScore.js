@@ -2,6 +2,11 @@ import express from 'express';
 import { verifyFirebaseToken } from '../middleware/auth.js';
 import { getFinancialProfileByUserId } from '../services/financialProfileService.js';
 import { calculateCreditScore } from '../services/creditScoreService.js';
+import {
+  saveCreditScoreToHistory,
+  getCreditScoreHistory,
+  generateSimulatedHistory,
+} from '../services/creditScoreHistoryService.js';
 
 const router = express.Router();
 
@@ -43,6 +48,16 @@ router.post('/calculate', verifyFirebaseToken, async (req, res) => {
 
     // Calculate credit score
     const creditScoreResult = calculateCreditScore(profileToUse);
+
+    // Save to history
+    try {
+      await saveCreditScoreToHistory(userId, creditScoreResult.score, {
+        category: creditScoreResult.category,
+      });
+    } catch (historyError) {
+      console.warn('Warning: Could not save to history:', historyError);
+      // Don't fail the request if history save fails
+    }
 
     return res.status(200).json({
       success: true,
@@ -140,6 +155,44 @@ router.post('/what-if', verifyFirebaseToken, async (req, res) => {
       success: false,
       error: error.message || 'Failed to calculate what-if credit score',
       code: 'CALCULATION_ERROR',
+    });
+  }
+});
+
+/**
+ * @route GET /api/credit-score/history
+ * @desc Get user's credit score history with month-wise data
+ * @access Private (requires auth token)
+ * @returns {Array} List of credit scores grouped by month
+ */
+router.get('/history', verifyFirebaseToken, async (req, res) => {
+  try {
+    const userId = req.user.uid;
+
+    // Get user's credit score history
+    let history = await getCreditScoreHistory(userId);
+
+    // If no history exists, generate simulated data
+    if (history.length === 0) {
+      history = generateSimulatedHistory(6);
+    }
+
+    return res.status(200).json({
+      success: true,
+      message: 'Credit score history retrieved successfully',
+      data: {
+        history,
+        totalRecords: history.length,
+        latestScore: history.length > 0 ? history[history.length - 1].score : null,
+      },
+    });
+  } catch (error) {
+    console.error('Error retrieving credit score history:', error);
+
+    return res.status(400).json({
+      success: false,
+      error: error.message || 'Failed to retrieve credit score history',
+      code: 'RETRIEVAL_ERROR',
     });
   }
 });

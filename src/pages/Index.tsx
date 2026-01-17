@@ -1,4 +1,5 @@
 import { Header } from "@/components/Header";
+import { useAuth } from "@/contexts/AuthContext";
 import { CreditScoreGauge } from "@/components/CreditScoreGauge";
 import { StatCard } from "@/components/StatCard";
 import { CreditTrendsChart } from "@/components/CreditTrendsChart";
@@ -52,15 +53,17 @@ const loanOptions = [
 ];
 
 const Index = () => {
+  const { user } = useAuth();
+  
   return (
     <div className="min-h-screen bg-background">
       <Header />
       
       <main className="container py-8 space-y-8">
         {/* Welcome Section */}
-        <div className="animate-fade-up">
+        <div className="animate-fade-up">user?.displayName
           <h1 className="text-3xl font-display font-bold text-foreground">
-            Welcome back, <span className="gradient-text">Priya</span>
+            Welcome back, <span className="gradient-text">{(typeof window !== 'undefined' && window.localStorage.getItem('displayName')) || 'Priya'}</span>
           </h1>
           <p className="text-muted-foreground mt-2">
             Your credit health is improving. Keep up the good work!

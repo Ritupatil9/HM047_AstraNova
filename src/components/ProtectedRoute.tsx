@@ -6,11 +6,14 @@ interface ProtectedRouteProps {
   children: React.ReactNode;
 }
 
+export const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ children }) => {
 const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ children }) => {
   const { user, loading } = useAuth();
 
   if (loading) {
     return (
+      <div className="flex justify-center items-center min-h-screen">
+        <Loader2 className="w-8 h-8 animate-spin text-blue-500" />
       <div className="min-h-screen flex items-center justify-center">
         <Loader2 className="h-8 w-8 animate-spin text-blue-600" />
       </div>
@@ -18,6 +21,7 @@ const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ children }) => {
   }
 
   if (!user) {
+    return <Navigate to="/login" replace />;
     return <Navigate to="/login" />;
   }
 

@@ -1,0 +1,38 @@
+{
+  "features": [
+    "age",
+    "gender_encoded",
+    "marital_status_encoded",
+    "education_level_encoded",
+    "annual_income",
+    "monthly_income",
+    "employment_status_encoded",
+    "debt_to_income_ratio",
+    "credit_score",
+    "loan_amount",
+    "loan_purpose_encoded",
+    "interest_rate",
+    "loan_term",
+    "installment",
+    "num_of_open_accounts",
+    "total_credit_limit",
+    "current_balance",
+    "delinquency_history",
+    "public_records",
+    "num_of_delinquencies"
+  ],
+  "train_accuracy": 0.93975,
+  "test_accuracy": 0.89475,
+  "feature_importance": {
+    "employment_status_encoded": 0.4256939431402624,
+    "debt_to_income_ratio": 0.10662878876695261,
+    "credit_score": 0.09498227564029688,
+    "interest_rate": 0.04454976918532675,
+    "installment": 0.034808852862802366,
+    "current_balance": 0.034593978332937335,
+    "loan_amount": 0.03332545215955351,
+    "total_credit_limit": 0.03294009410466619,
+    "monthly_income": 0.03218695782985399,
+    "annual_income": 0.03217227921714273
+  }
+}

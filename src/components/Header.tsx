@@ -66,18 +66,12 @@ export const Header = () => {
           >
             Financial Profile
           </button>
-          <a
-            href="/ai-prediction"
-            className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
-          >
-            AI Prediction
-          </a>
-          <a
-            href="#"
+          <button
+            onClick={() => navigate("/loans")}
             className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
           >
             Loans
-          </a>
+          </button>
           <a
             href="#"
             className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"

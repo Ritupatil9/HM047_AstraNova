@@ -13,7 +13,7 @@ import EMICalculator from "./pages/EMICalculator";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import FinancialProfile from "./pages/FinancialProfile";
-import AIPrediction from "./pages/AIPrediction";
+import Loans from "./pages/Loans";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -73,14 +73,15 @@ const App = () => (
             />
             <Route 
               path="/ai-prediction" 
+              path="/loans"
               element={
                 <ProtectedRoute>
-                  <AIPrediction />
+                  <Loans />
                 </ProtectedRoute>
-              } 
+              }
             />
             
-            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+            {/* Catch-all route for 404 pages */}
             <Route path="*" element={<NotFound />} />
           </Routes>
         </AuthProvider>

@@ -10,6 +10,8 @@ import {
   Target,
   Brain,
   HelpCircle,
+  Sparkles,
+  Shield,
 } from "lucide-react";
 
 export default function Dashboard() {
@@ -31,8 +33,8 @@ export default function Dashboard() {
       description: "Check your eligibility for various loan products based on your profile",
       icon: Zap,
       color: "from-purple-500 to-purple-600",
-      status: "coming-soon",
-      action: () => {},
+      status: "available",
+      action: () => navigate("/loans"),
     },
     {
       id: "emi-calculator",
@@ -78,12 +80,25 @@ export default function Dashboard() {
 
       <main className="container py-12">
         {/* Page Header */}
-        <div className="mb-12">
-          <h1 className="text-4xl font-bold mb-2">Welcome to Credit Companion</h1>
-          <p className="text-lg text-muted-foreground">
-            <h1 className="text-4xl font-bold mb-2">Welcome to Credit Companion</h1>
+        <div className="mb-16 text-center relative">
+          <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-100 text-blue-700 rounded-full text-sm font-medium mb-6">
+            <Sparkles className="w-4 h-4" />
+            <span>AI-Powered Financial Intelligence</span>
+          </div>
+          
+          <h1 className="text-5xl md:text-6xl font-bold mb-4 bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 bg-clip-text text-transparent">
+            Welcome to CreditUp
+          </h1>
+          <p className="text-xl text-slate-600 max-w-2xl mx-auto">
+            Your intelligent partner for financial health and credit management
           </p>
         </div>
+        <div className="mb-16" id="features">
+          <div className="flex items-center gap-2 mb-8">
+            <Shield className="w-6 h-6 text-blue-600" />
+            <h2 className="text-2xl font-bold text-slate-800">Explore Features</h2>
+          </div>
+        </div> 
 
         {/* Features Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -123,7 +138,7 @@ export default function Dashboard() {
                     ) : (
                       <div className="w-full">
                         <span className="inline-block px-3 py-1 text-xs font-semibold text-muted-foreground bg-muted rounded-full">
-                          Coming Soon
+                          Try Now
                         </span>
                       </div>
                     )}

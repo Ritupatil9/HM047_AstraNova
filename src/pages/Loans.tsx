@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Header } from '@/components/Header';
+import { Footer } from '@/components/Footer';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
@@ -289,7 +290,7 @@ const Loans = () => {
 
                     <Button onClick={calculateLoan} className="w-full" size="lg">
                       <Calculator className="w-4 h-4 mr-2" />
-                      Calculate EMI
+                      Calculate Loan
                     </Button>
                   </CardContent>
                 </Card>
@@ -717,7 +718,7 @@ const Loans = () => {
                           document.querySelector('[value="calculator"]')?.dispatchEvent(new Event('click', { bubbles: true }));
                         }}
                       >
-                        Calculate EMI
+                        Calculate Loan
                       </Button>
                     </CardContent>
                   </Card>
@@ -766,6 +767,8 @@ const Loans = () => {
           </Tabs>
         </div>
       </div>
+      
+      <Footer />
     </div>
   );
 };

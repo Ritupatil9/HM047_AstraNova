@@ -49,7 +49,7 @@ export const Header = () => {
             <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-secondary to-primary flex items-center justify-center">
               <span className="text-primary-foreground font-display font-bold text-sm">C</span>
             </div>
-            <span className="font-display font-bold text-xl text-foreground">CreditWise</span>
+            <span className="font-display font-bold text-xl text-foreground">CreditUp</span>
           </div>
         </div>
 

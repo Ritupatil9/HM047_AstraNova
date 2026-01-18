@@ -159,7 +159,7 @@ const Index = () => {
       <footer className="border-t border-border mt-12 py-8 bg-muted/30">
         <div className="container text-center">
           <p className="text-sm text-muted-foreground">
-            © 2024 CreditWise. Empowering your financial journey.
+            © 2024 CreditUp. Empowering your financial journey.
           </p>
         </div>
       </footer>

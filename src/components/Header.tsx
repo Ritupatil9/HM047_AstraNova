@@ -72,19 +72,97 @@ export const Header = () => {
           >
             Loans
           </button>
-          <a
-            href="#"
+          <button
+            onClick={() => navigate("/insights")}
             className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
           >
-            Credit Cards
-          </a>
+            Insights
+          </button>
+          <button
+            onClick={() => navigate("/future-scope")}
+            className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+          >
+            Future Scope
+          </button>
         </nav>
 
         <div className="flex items-center gap-2">
-          <Button variant="ghost" size="icon" className="relative">
-            <Bell className="w-5 h-5" />
-            <span className="absolute top-2 right-2 w-2 h-2 bg-destructive rounded-full" />
-          </Button>
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button variant="ghost" size="icon" className="relative">
+                <Bell className="w-5 h-5" />
+                <span className="absolute top-2 right-2 w-2 h-2 bg-destructive rounded-full animate-pulse" />
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end" className="w-80">
+              <DropdownMenuLabel className="font-semibold">Notifications</DropdownMenuLabel>
+              <DropdownMenuSeparator />
+              
+              <div className="max-h-96 overflow-y-auto">
+                <div className="p-3 hover:bg-muted/50 cursor-pointer border-b">
+                  <div className="flex items-start gap-3">
+                    <div className="w-2 h-2 bg-blue-500 rounded-full mt-2 flex-shrink-0"></div>
+                    <div className="flex-1">
+                      <p className="text-sm font-medium">Credit Score Updated</p>
+                      <p className="text-xs text-muted-foreground">Your credit score has improved by 15 points! 🎉</p>
+                      <p className="text-xs text-muted-foreground mt-1">2 hours ago</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="p-3 hover:bg-muted/50 cursor-pointer border-b">
+                  <div className="flex items-start gap-3">
+                    <div className="w-2 h-2 bg-green-500 rounded-full mt-2 flex-shrink-0"></div>
+                    <div className="flex-1">
+                      <p className="text-sm font-medium">EMI Payment Reminder</p>
+                      <p className="text-xs text-muted-foreground">Your home loan EMI is due in 3 days - ₹25,000</p>
+                      <p className="text-xs text-muted-foreground mt-1">5 hours ago</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="p-3 hover:bg-muted/50 cursor-pointer border-b">
+                  <div className="flex items-start gap-3">
+                    <div className="w-2 h-2 bg-purple-500 rounded-full mt-2 flex-shrink-0"></div>
+                    <div className="flex-1">
+                      <p className="text-sm font-medium">New Loan Offer Available</p>
+                      <p className="text-xs text-muted-foreground">Pre-approved personal loan at 10.5% interest rate</p>
+                      <p className="text-xs text-muted-foreground mt-1">1 day ago</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="p-3 hover:bg-muted/50 cursor-pointer border-b">
+                  <div className="flex items-start gap-3">
+                    <div className="w-2 h-2 bg-orange-500 rounded-full mt-2 flex-shrink-0"></div>
+                    <div className="flex-1">
+                      <p className="text-sm font-medium">Credit Utilization Alert</p>
+                      <p className="text-xs text-muted-foreground">You're using 65% of your credit limit. Keep it below 30% for better score.</p>
+                      <p className="text-xs text-muted-foreground mt-1">2 days ago</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="p-3 hover:bg-muted/50 cursor-pointer">
+                  <div className="flex items-start gap-3">
+                    <div className="w-2 h-2 bg-gray-400 rounded-full mt-2 flex-shrink-0"></div>
+                    <div className="flex-1">
+                      <p className="text-sm font-medium">Financial Profile Updated</p>
+                      <p className="text-xs text-muted-foreground">Your financial profile has been successfully updated.</p>
+                      <p className="text-xs text-muted-foreground mt-1">3 days ago</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <DropdownMenuSeparator />
+              <div className="p-2">
+                <Button variant="ghost" className="w-full text-sm" size="sm">
+                  View All Notifications
+                </Button>
+              </div>
+            </DropdownMenuContent>
+          </DropdownMenu>
 
           {user && (
             <DropdownMenu>

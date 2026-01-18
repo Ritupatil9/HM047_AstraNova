@@ -60,8 +60,8 @@ export default function Dashboard() {
       description: "Simulate financial scenarios to see how changes affect your score",
       icon: Brain,
       color: "from-pink-500 to-pink-600",
-      status: "coming-soon",
-      action: () => {},
+      status: "available",
+      action: () => navigate("/what-if-simulation"),
     },
     {
       id: "financial-guidance",

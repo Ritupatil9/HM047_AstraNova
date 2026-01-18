@@ -1,6 +1,7 @@
 import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
+import './config/firebase.js'; // Initialize Firebase Admin SDK
 import financialProfileRoutes from './routes/financialProfile.js';
 import creditScoreRoutes from './routes/creditScore.js';
 import emiRoutes from './routes/emi.js';

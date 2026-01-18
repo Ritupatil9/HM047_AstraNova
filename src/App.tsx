@@ -17,6 +17,7 @@ import FinancialProfile from "./pages/FinancialProfile";
 import Loans from "./pages/Loans";
 import Insights from "./pages/Insights";
 import FutureScope from "./pages/FutureScope";
+import WhatIfSimulation from "./pages/WhatIfSimulation";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -87,6 +88,14 @@ const App = () => (
               element={
                 <ProtectedRoute>
                   <Insights />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/what-if-simulation"
+              element={
+                <ProtectedRoute>
+                  <WhatIfSimulation />
                 </ProtectedRoute>
               }
             />

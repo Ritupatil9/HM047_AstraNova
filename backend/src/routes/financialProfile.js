@@ -99,6 +99,14 @@ router.get('/', verifyFirebaseToken, async (req, res) => {
   } catch (error) {
     console.error('Error retrieving financial profile:', error);
 
+    if (error.status) {
+      return res.status(error.status).json({
+        success: false,
+        error: error.message,
+        code: error.code,
+      });
+    }
+
     return res.status(500).json({
       success: false,
       error: 'Internal server error while retrieving profile',

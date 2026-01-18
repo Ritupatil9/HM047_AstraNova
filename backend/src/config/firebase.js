@@ -4,27 +4,68 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 // Initialize Firebase Admin SDK
-const serviceAccount = JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT_JSON || '{}');
+const serviceAccount = (() => {
+  try {
+    const json = process.env.FIREBASE_SERVICE_ACCOUNT_JSON || '{}';
+    let parsed = JSON.parse(json);
+    
+    // Fix escaped newlines in private_key (multiple strategies to handle different encodings)
+    if (parsed.private_key && typeof parsed.private_key === 'string') {
+      // Strategy 1: Replace escaped newlines
+      parsed.private_key = parsed.private_key.replace(/\\n/g, '\n');
+      
+      // Strategy 2: Ensure it starts and ends correctly
+      if (!parsed.private_key.includes('-----BEGIN PRIVATE KEY-----')) {
+        console.warn('⚠️  Private key format might be incorrect');
+      }
+      
+      console.log('✅ Private key processed - starts with:', parsed.private_key.substring(0, 30));
+    }
+    
+    if (!parsed.project_id) {
+      console.error('❌ Firebase service account JSON is invalid or missing project_id');
+    } else {
+      console.log('✅ Service account parsed - Project:', parsed.project_id);
+      console.log('✅ Service account email:', parsed.client_email);
+    }
+    return parsed;
+  } catch (error) {
+    console.error('❌ Failed to parse FIREBASE_SERVICE_ACCOUNT_JSON:', error.message);
+    return {};
+  }
+})();
 
-// Check if running locally (development) or in production
-const useEmulator = process.env.NODE_ENV === 'development' && process.env.FIREBASE_USE_EMULATOR === 'true';
+// Log the private key issue if exists
+if (!serviceAccount.private_key) {
+  console.error('❌ CRITICAL: No private_key found in service account!');
+}
 
 try {
-  admin.initializeApp({
-    credential: admin.credential.cert(serviceAccount),
-    projectId: process.env.FIREBASE_PROJECT_ID,
-  });
+  // Check if Firebase is already initialized
+  if (!admin.apps.length) {
+    admin.initializeApp({
+      credential: admin.credential.cert(serviceAccount),
+      projectId: process.env.FIREBASE_PROJECT_ID,
+    });
+    console.log('✅ Firebase Admin SDK initialized with service account');
+  } else {
+    console.log('ℹ️  Firebase already initialized');
+  }
 } catch (error) {
-  console.error('Firebase initialization error:', error.message);
+  console.error('❌ Firebase initialization error:', error.message);
+  console.error('❌ Error details:', error);
+  process.exit(1);
 }
 
-// Connect to Firestore
-export const db = admin.firestore();
-export const auth = admin.auth();
+// Get Firestore and Auth instances
+const db = admin.firestore();
+const auth = admin.auth();
 
-// For local development with emulator (optional)
-if (useEmulator) {
-  process.env.FIREBASE_DATABASE_EMULATOR_HOST = 'localhost:9000';
-}
+// Set Firestore settings
+db.settings({ ignoreUndefinedProperties: true });
 
+console.log('✅ Firestore instance obtained and configured');
+console.log('✅ Auth instance obtained');
+
+export { db, auth };
 export default admin;
